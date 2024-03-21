@@ -5,7 +5,7 @@ import InventoryPage  from "./Pages/InventoryPage";
 var mainPage = new MainPage();
 var inventoryPage = new InventoryPage();
 
-describe('Main Page Testing', () => {
+describe('Main/Login Page Testing', () => {
   beforeEach(() =>{
     mainPage.goToMainPage()
   })
@@ -16,6 +16,7 @@ describe('Main Page Testing', () => {
   it('Login as "standard_user"', () =>{
     mainPage.login(mainPage.userName1, mainPage.password)
     inventoryPage.verifyThatUserIsLoggedIn()
+    inventoryPage.inventoryIsDisplayedAndShowsCorrectText()
   })
   it('Verify that "locked_out_user" cannot login', () =>{
     mainPage.login(mainPage.userName2, mainPage.password)
@@ -26,6 +27,7 @@ describe('Main Page Testing', () => {
   it('Login as "problem_user"', () =>{
     mainPage.login(mainPage.userName3, mainPage.password)
     inventoryPage.verifyThatUserIsLoggedIn()
+    inventoryPage.inventoryIsDisplayedAndShowsCorrectText()
   })
   it('Login as "performance_glitch_user"', () =>{
 
@@ -37,6 +39,7 @@ describe('Main Page Testing', () => {
 
     // Verify that user is logged in
     inventoryPage.verifyThatUserIsLoggedIn();
+    inventoryPage.inventoryIsDisplayedAndShowsCorrectText()
 
     // Calculate the elapsed time
     const elapsedTime = new Date().getTime() - startTime;
